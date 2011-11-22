@@ -5,8 +5,9 @@ GM.player = function(){
 			x = 0,
 			y = 0,
 			rotation = 0,
-			width = 20,
-			height = 20,
+			width = 40,
+			height = 40,
+			health = 130,
 			ang = 15,
 			pi = Math.PI;
 			
@@ -23,12 +24,17 @@ GM.player = function(){
 		reflectTopBottom: function(){
 			rotation = -1 * (rotation);
 		},
+		takeDamage: function(){
+			height -=.25;
+			width -=.25;
+			speed +=.025;			
+			health -=1;
+		},
 		headFor: function(newX, newY){
 			var dY = y - newY;
 			var dX = newX - x;
 			rotation = 360 - Math.round(Math.atan2(dY,dX)*180/ pi);
 		},
-		
 		howfar:function(){
 			var goalPt,
 					startPt;
@@ -66,6 +72,9 @@ GM.player = function(){
 		},
 		getRotation:function(){
 			return rotation;
+		},	
+		getHealth: function(){
+			return health;
 		}
 	};
 	return pub;

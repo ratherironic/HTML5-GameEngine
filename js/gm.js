@@ -21,7 +21,7 @@ var GM = (function(){
 				ctx = canvas.getContext('2d');
 				//Create Manager Obj
 				manager = new GM.manager();
-				manager.pageLoad();
+				manager.init();
 			}
 		},
 		start: function(){
